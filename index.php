@@ -53,15 +53,15 @@ cek_login();
         <h5 class="card-title">Aplikasi pengelolaan data buku</h5>
         <p class="card-text">Aplikasi ini dibuat untuk Ujian akhir semester Mata kuliah pemrograman web I, Dalam aplikasi ini terdapat fitur authentikasi, dan beberapa tabel diantaranya tabel Administrator, Penulis, Penerbit Dan tabel buku.</p>
         <p class="card-text">Aplikasi ini dibuat oleh:</p>
-        <p class="card-text my-0 py-0">Handip yusuf kurniawan</p>
-        <p class="card-text my-0 py-0">2113201027</p>
+        <p class="card-text my-0 py-0">Norbertus Tenau</p>
+        <p class="card-text my-0 py-0">2113201019</p>
       </div>
     </div>
   </main>
 
   <div class="footer bg-dark text-light py-3 mt-3">
     <div class="container">
-      <p class="m-0">Copyright &copy 2022 | Handip yusuf kurniawan (2113201027)</p>
+      <p class="m-0">Copyright &copy 2022 | Norbertus Tenau (2113201019)</p>
     </div>
   </div>
 

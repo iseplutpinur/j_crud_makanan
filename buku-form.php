@@ -166,7 +166,7 @@ if (isset($_GET['edit'])) {
 
   <div class="footer bg-dark text-light py-3 mt-3">
     <div class="container">
-      <p class="m-0">Copyright &copy 2022 | Handip yusuf kurniawan (2113201027)</p>
+      <p class="m-0">Copyright &copy 2022 | Norbertus Tenau (2113201019)</p>
     </div>
   </div>
 
