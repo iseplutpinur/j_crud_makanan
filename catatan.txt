@@ -1,20 +1,20 @@
-Pengenalan aplikasi
-
 Tutorial instalasi
 
+Pengenalan aplikasi
+
 Teknologi yang digunakan
-  PHP Versi 7 >
-  Bootstrap 4
+  PHP Versi 7 >=
+  Framework CSS Bootstrap V4
   MySQL Database
 
 Fitur
   Autentikasi
-  CRUD Data Penerbit
-  CRUD Data Penulis
-  CRUD Data Buku
+  CRUD Data Kategori
+  CRUD Data jenis
+  CRUD Data Makanan
 
 Tabel
-  Penulis
-  Penerbit
-  Buku
+  jenis
+  Kategori
+  Makanan
   admin

@@ -16,11 +16,11 @@ if (isset($_POST['submit'])) {
   // cek apakah datanya di tambah atau di update dengan mengecek alamat url
   if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
-    $query = "UPDATE penulis SET nama='$nama', deskripsi='$deskripsi' WHERE id='$id'";
+    $query = "UPDATE jenis SET nama='$nama', deskripsi='$deskripsi' WHERE id='$id'";
   }
   // jika tidak ada data yang di kirim di url maka data di tambah
   else {
-    $query = "INSERT INTO penulis(id, nama, deskripsi) VALUES (null, '$nama', '$deskripsi')";
+    $query = "INSERT INTO jenis(id, nama, deskripsi) VALUES (null, '$nama', '$deskripsi')";
   }
 
   $result = mysqli_query($conn, $query);
@@ -38,7 +38,7 @@ if (isset($_GET['edit'])) {
   $id = $_GET['edit'];
 
   // mengambil data dari database
-  $result = mysqli_query($conn, "SELECT * FROM penulis WHERE id='$id'");
+  $result = mysqli_query($conn, "SELECT * FROM jenis WHERE id='$id'");
   $data = mysqli_fetch_assoc($result);
 
   // jika data di temukan maka simpan ke dalam variable yang sudah ada.
@@ -54,7 +54,7 @@ if (isset($_GET['edit'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title><?= $title ?> Data Penulis | CRUD Data Buku</title>
+  <title><?= $title ?> Data jenis | CRUD Data Makanan</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -65,7 +65,7 @@ if (isset($_GET['edit'])) {
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="./index.php">CRUD Data Buku</a>
+    <a class="navbar-brand" href="./index.php">CRUD Data Makanan</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -76,13 +76,13 @@ if (isset($_GET['edit'])) {
           <a class="nav-link" href="./index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./penulis.php">Penulis</a>
+          <a class="nav-link active" href="./jenis.php">jenis</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./penerbit.php">Penerbit</a>
+          <a class="nav-link" href="./kategori.php">Kategori</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./buku.php">Buku</a>
+          <a class="nav-link" href="./makanan.php">Makanan</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./logout.php">Logout</a>
@@ -100,15 +100,15 @@ if (isset($_GET['edit'])) {
     <div class="card shadow mt-3">
       <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
-          <label class="h6"><?= $title ?> Data Penulis</label>
-          <a href="./penulis.php" class="btn btn-sm btn-secondary">Kembali</a>
+          <label class="h6"><?= $title ?> Data jenis</label>
+          <a href="./jenis.php" class="btn btn-sm btn-secondary">Kembali</a>
         </div>
       </div>
       <div class="card-body">
         <form method="POST">
           <div class="form-group">
-            <label for="nama">Nama Penulis</label>
-            <input type="text" class="form-control" name="nama" id="nama" value="<?= $nama ?>" placeholder="Nama Penulis" required>
+            <label for="nama">Nama jenis</label>
+            <input type="text" class="form-control" name="nama" id="nama" value="<?= $nama ?>" placeholder="Nama jenis" required>
           </div>
           <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
@@ -122,7 +122,7 @@ if (isset($_GET['edit'])) {
 
   <div class="footer bg-dark text-light py-3 mt-3">
     <div class="container">
-      <p class="m-0">Copyright &copy 2022 | Norbertus Tenau (2113201019)</p>
+      <p class="m-0">Copyright &copy 2022 | Fakhirah Azzahra (2113201050)</p>
     </div>
   </div>
 

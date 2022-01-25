@@ -12,7 +12,7 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
--- Database: `almardiy_j_buku`
+-- Database: `almardiy_j_makanan`
 --
 
 -- --------------------------------------------------------
@@ -39,63 +39,63 @@ INSERT INTO `admin` (`id`, `nama`, `telepon`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `buku`
+-- Table structure for table `makanan`
 --
 
-CREATE TABLE `buku` (
+CREATE TABLE `makanan` (
   `id` int(11) NOT NULL,
-  `penulis_id` int(11) NOT NULL,
-  `penerbit_id` int(11) NOT NULL,
+  `jenis_id` int(11) NOT NULL,
+  `kategori_id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `tahun` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `buku`
+-- Dumping data for table `makanan`
 --
 
-INSERT INTO `buku` (`id`, `penulis_id`, `penerbit_id`, `nama`, `tahun`, `deskripsi`) VALUES
-(2, 6, 6, 'Buku', 20000, 'des');
+INSERT INTO `makanan` (`id`, `jenis_id`, `kategori_id`, `nama`, `harga`, `deskripsi`) VALUES
+(2, 6, 6, 'Makanan', 20000, 'des');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penerbit`
+-- Table structure for table `kategori`
 --
 
-CREATE TABLE `penerbit` (
+CREATE TABLE `kategori` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `penerbit`
+-- Dumping data for table `kategori`
 --
 
-INSERT INTO `penerbit` (`id`, `nama`, `deskripsi`) VALUES
-(6, 'Nama Penerbit', 'Des'),
+INSERT INTO `kategori` (`id`, `nama`, `deskripsi`) VALUES
+(6, 'Nama Kategori', 'Des'),
 (7, 'fasdf', 'sdafsadf');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penulis`
+-- Table structure for table `jenis`
 --
 
-CREATE TABLE `penulis` (
+CREATE TABLE `jenis` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `penulis`
+-- Dumping data for table `jenis`
 --
 
-INSERT INTO `penulis` (`id`, `nama`, `deskripsi`) VALUES
-(6, 'Nama Penulis', 'Penulis');
+INSERT INTO `jenis` (`id`, `nama`, `deskripsi`) VALUES
+(6, 'Nama jenis', 'jenis');
 
 --
 -- Indexes for dumped tables
@@ -108,21 +108,21 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `buku`
+-- Indexes for table `makanan`
 --
-ALTER TABLE `buku`
+ALTER TABLE `makanan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `penerbit`
+-- Indexes for table `kategori`
 --
-ALTER TABLE `penerbit`
+ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `penulis`
+-- Indexes for table `jenis`
 --
-ALTER TABLE `penulis`
+ALTER TABLE `jenis`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -136,20 +136,20 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `buku`
+-- AUTO_INCREMENT for table `makanan`
 --
-ALTER TABLE `buku`
+ALTER TABLE `makanan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `penerbit`
+-- AUTO_INCREMENT for table `kategori`
 --
-ALTER TABLE `penerbit`
+ALTER TABLE `kategori`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `penulis`
+-- AUTO_INCREMENT for table `jenis`
 --
-ALTER TABLE `penulis`
+ALTER TABLE `jenis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;

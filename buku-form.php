@@ -10,22 +10,22 @@ $message_status = false;
 if (isset($_POST['submit'])) {
   // ambil data dan simpan ke dalam variable
   $nama = $_POST['nama'];
-  $tahun = $_POST['tahun'];
+  $harga = $_POST['harga'];
   $deskripsi = $_POST['deskripsi'];
-  $penerbit = $_POST['penerbit'];
-  $penulis = $_POST['penulis'];
+  $kategori = $_POST['kategori'];
+  $jenis = $_POST['jenis'];
   $query = "";
 
 
   // cek apakah datanya di tambah atau di update dengan mengecek deskripsi url
   if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
-    $query = "UPDATE buku SET nama='$nama', deskripsi='$deskripsi', penerbit_id='$penerbit', penulis_id='$penulis', tahun='$tahun' WHERE id='$id'";
+    $query = "UPDATE makanan SET nama='$nama', deskripsi='$deskripsi', kategori_id='$kategori', jenis_id='$jenis', harga='$harga' WHERE id='$id'";
   }
   // jika tidak ada data yang di kirim di url maka data di tambah
   else {
-    $query = "INSERT INTO `buku` (`id`, `penulis_id`, `penerbit_id`, `nama`, `tahun`, `deskripsi`) VALUES
-    (NULL, '$penulis', '$penerbit', '$nama', '$tahun', '$deskripsi')";
+    $query = "INSERT INTO `makanan` (`id`, `jenis_id`, `kategori_id`, `nama`, `harga`, `deskripsi`) VALUES
+    (NULL, '$jenis', '$kategori', '$nama', '$harga', '$deskripsi')";
   }
   $result = mysqli_query($conn, $query);
 
@@ -37,9 +37,9 @@ if (isset($_POST['submit'])) {
 $id = '';
 $nama = '';
 $deskripsi = '';
-$penerbit = '';
-$penulis = '';
-$tahun = '';
+$kategori = '';
+$jenis = '';
+$harga = '';
 $title = 'Tambah';
 // cek jika halaman ini untuk edit data
 if (isset($_GET['edit'])) {
@@ -47,15 +47,15 @@ if (isset($_GET['edit'])) {
   $title = 'Ubah';
 
   // mengambil data dari database
-  $result = mysqli_query($conn, "SELECT * FROM buku WHERE id='$id'");
+  $result = mysqli_query($conn, "SELECT * FROM makanan WHERE id='$id'");
   $data = mysqli_fetch_assoc($result);
   // jika data di temukan maka simpan ke dalam variable yang sudah ada.
   if ($data) {
     $nama = $data['nama'];
     $deskripsi = $data['deskripsi'];
-    $tahun = $data['tahun'];
-    $penerbit = $data['penerbit_id'];
-    $penulis = $data['penulis_id'];
+    $harga = $data['harga'];
+    $kategori = $data['kategori_id'];
+    $jenis = $data['jenis_id'];
   }
 }
 ?>
@@ -64,7 +64,7 @@ if (isset($_GET['edit'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title><?= $title ?> Data Buku | CRUD Data Buku</title>
+  <title><?= $title ?> Data Makanan | CRUD Data Makanan</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -75,7 +75,7 @@ if (isset($_GET['edit'])) {
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="./index.php">CRUD Data Buku</a>
+    <a class="navbar-brand" href="./index.php">CRUD Data Makanan</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -86,13 +86,13 @@ if (isset($_GET['edit'])) {
           <a class="nav-link" href="./index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./penulis.php">Penulis</a>
+          <a class="nav-link" href="./jenis.php">jenis</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./penerbit.php">Penerbit</a>
+          <a class="nav-link" href="./kategori.php">Kategori</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./buku.php">Buku</a>
+          <a class="nav-link active" href="./makanan.php">Makanan</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./logout.php">Logout</a>
@@ -110,25 +110,25 @@ if (isset($_GET['edit'])) {
     <div class="card shadow mt-3">
       <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
-          <label class="h6"><?= $title ?> Data Buku</label>
-          <a href="./buku.php" class="btn btn-sm btn-secondary">Kembali</a>
+          <label class="h6"><?= $title ?> Data Makanan</label>
+          <a href="./makanan.php" class="btn btn-sm btn-secondary">Kembali</a>
         </div>
       </div>
       <div class="card-body">
         <form method="POST">
           <div class="form-group">
-            <label for="nama">Nama Buku</label>
-            <input type="text" class="form-control" name="nama" id="nama" value="<?= $nama ?>" placeholder="Nama Buku" required>
+            <label for="nama">Nama Makanan</label>
+            <input type="text" class="form-control" name="nama" id="nama" value="<?= $nama ?>" placeholder="Nama Makanan" required>
           </div>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="penulis">Penulis</label>
-                <select class="form-control" name="penulis" id="penulis">
+                <label for="jenis">jenis</label>
+                <select class="form-control" name="jenis" id="jenis">
                   <?php
-                  $result = mysqli_query($conn, "SELECT * FROM penulis");
+                  $result = mysqli_query($conn, "SELECT * FROM jenis");
                   while ($row = mysqli_fetch_assoc($result)) {
-                    $selected = $row['id'] == $penulis ? 'selected' : '';
+                    $selected = $row['id'] == $jenis ? 'selected' : '';
                     echo "<option value='{$row['id']}' {$selected}>{$row['nama']}</option>";
                   }
                   ?>
@@ -137,12 +137,12 @@ if (isset($_GET['edit'])) {
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="penerbit">Penerbit</label>
-                <select class="form-control" name="penerbit" id="penerbit">
+                <label for="kategori">Kategori</label>
+                <select class="form-control" name="kategori" id="kategori">
                   <?php
-                  $result = mysqli_query($conn, "SELECT * FROM penerbit");
+                  $result = mysqli_query($conn, "SELECT * FROM kategori");
                   while ($row = mysqli_fetch_assoc($result)) {
-                    $selected = $row['id'] == $penerbit ? 'selected' : '';
+                    $selected = $row['id'] == $kategori ? 'selected' : '';
                     echo "<option value='{$row['id']}' {$selected}>{$row['nama']}</option>";
                   }
                   ?>
@@ -151,8 +151,8 @@ if (isset($_GET['edit'])) {
             </div>
           </div>
           <div class="form-group">
-            <label for="tahun">Tahun Terbit</label>
-            <input type="number" class="form-control" name="tahun" id="tahun" value="<?= $tahun ?>" placeholder="Tahun Terbit" required>
+            <label for="harga">Harga Terbit</label>
+            <input type="number" class="form-control" name="harga" id="harga" value="<?= $harga ?>" placeholder="Harga Terbit" required>
           </div>
           <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
@@ -166,7 +166,7 @@ if (isset($_GET['edit'])) {
 
   <div class="footer bg-dark text-light py-3 mt-3">
     <div class="container">
-      <p class="m-0">Copyright &copy 2022 | Norbertus Tenau (2113201019)</p>
+      <p class="m-0">Copyright &copy 2022 | Fakhirah Azzahra (2113201050)</p>
     </div>
   </div>
 
